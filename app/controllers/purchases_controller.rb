@@ -11,6 +11,7 @@ class PurchasesController < ApplicationController
     def create
         @payment_intent = Stripe::PaymentIntent.retrieve(params[:payment_intent_id])
         if @payment_intent.status == "succeeded"
+            byebug
             charge = @payment_intent.charges.data.first
             card = charge.payment_method_details.card
 

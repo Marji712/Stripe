@@ -20,6 +20,9 @@ $(document).on("turbolinks:load", () => {
 })
 
 document.addEventListener("turbolinks:load", () => {
+  const form = document.querySelector("#payment-form")
+  if (form == null) { return }
+  
   const public_key = document.querySelector("meta[name='stripe-key']").getAttribute("content")
   const stripe = Stripe(public_key)
 
@@ -36,7 +39,7 @@ document.addEventListener("turbolinks:load", () => {
     }
   })
 
-  const form = document.querySelector("#payment-form")
+  
   form.addEventListener("submit", (event) => {
     event.preventDefault()
 
